@@ -1,48 +1,59 @@
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f9f9f9;
-        color: #333;
-        text-align: center;
-    }
-    header {
-        background: #2c3e50;
-        color: white;
-        padding: 1rem 0;
-        font-size: 1.5rem;
-    }
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-        color: #2c3e50;
-    }
-    label {
-        display: block;
-        margin: 10px 0 5px;
-        font-weight: bold;
-    }
-    textarea, input[type="text"], button {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-sizing: border-box;
-    }
-    button {
-        background: #3498db;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-    button:hover {
-        background: #2980b9;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+}
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    width: 100%;
+}
+.container {
+    max-width: 800px;
+    margin: 20px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 50%;
+}
+h2 {
+    color: #2c3e50;
+}
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    margin: 3%;
+}
+textarea, input[type="text"], button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 3%;
+}
+button:hover {
+    background: #2980b9;
+}
