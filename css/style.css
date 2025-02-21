@@ -17,7 +17,7 @@ header {
     font-size: 1.5rem;
     width: 100%;
 }
-.container {
+.container{
     max-width: 800px;
     margin: 20px 0;
     padding: 20px;
@@ -57,6 +57,7 @@ button {
 button:hover {
     background: #2980b9;
 }
+
 
 
 
@@ -152,4 +153,116 @@ button:hover {
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none;
+}
+
+
+
+/* шифрование текста */
+.output {
+    margin-top: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.result-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.result-card h4 {
+    color: #2c3e50;
+    margin: 2%;
+}
+
+.result-card p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #f2f2f2;
+}
+
+
+
+
+
+
+
+
+.accordion-toggle {
+    display: none; /* Скрываем чекбокс */
+}
+
+.accordion-label {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    display: block; /* Делаем метку блочным элементом */
+}
+
+.accordion-label:hover {
+    background-color: #2980b9;
+}
+
+.panel {
+    display: none; /* Скрываем панель по умолчанию */
+    overflow: hidden;
+    background-color: white;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.accordion-toggle:checked + .accordion-label + .panel {
+    display: block; /* Показываем панель, когда чекбокс отмечен */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9em; /* Уменьшение размера шрифта */
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 5px; /* Уменьшение отступов */
+    text-align: center;
+}
+
+th {
+    background: #f2f2f2;
+    display: none; /* Скрытие заголовков */
+}
+
+tr:hover {
+    background: #f9f9f9; /* Подсветка строки при наведении */
 }
