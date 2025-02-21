@@ -115,3 +115,41 @@ button:hover {
 .app-description button:hover {
     background: #2980b9;
 }
+
+
+.instructions{
+    display: none;
+}
+
+
+
+
+
+
+/* анализ частоты символов */
+.frequency-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.frequency-table th, .frequency-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+.frequency-table th {
+    background: #2c3e50;
+    color: white;
+}
+.frequency-table tr:nth-child(even) {
+    background: #f2f2f2;
+}
+.frequency-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+}
