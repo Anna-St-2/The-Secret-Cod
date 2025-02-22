@@ -105,8 +105,7 @@ echo '<style>
     <form action="frequencyAnalysis.php" method="post" class="container">
         <h2>Анализ частоты символов</h2>
         <label for="frequencyText">Введите текст для анализа:</label>
-        <textarea id="frequencyText" name="frequencyText" rows="4" placeholder="Текст для анализа частоты..." value="<?php echo htmlspecialchars($frequencyText);?>"></textarea>
-
+        <textarea id="frequencyText" name="frequencyText" rows="4" placeholder="Текст для анализа частоты..."><?php echo htmlspecialchars($frequencyText);?></textarea>
         <button>Анализировать</button>
 
         <div class="frequency-container">

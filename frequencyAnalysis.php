@@ -2,7 +2,7 @@
 session_start(); 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $frequencyText = mb_strtolower(trim($_POST['frequencyText']));
-    
+    $f2 = $frequencyText;
 
     // Удаляем регуляркой все символы, кроме букв
     $frequencyText = preg_replace('/[^a-zа-яё]/u', '', $frequencyText);
@@ -29,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $_SESSION['tableAnalysis'] = $tableAnalysis;
-    $_SESSION['frequencyText'] = $tableAnalysis;
-
+    $_SESSION['frequencyText'] = $f2;
+    echo $frequencyText.'<br>'. $f2;
 
     // echo $_SESSION['tableAnalysis'];
 
