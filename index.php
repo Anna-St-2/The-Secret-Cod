@@ -1,21 +1,26 @@
 <?php
-session_start(); // Начинаем сессию
+session_start(); 
 
-// Получаем данные из сессии, если они есть
+// Получаем данные из сессии
 $text = isset($_SESSION['text']) ? $_SESSION['text'] : '';
 $keyword = isset($_SESSION['keyword']) ? $_SESSION['keyword'] : '';
 $alphabet = isset($_SESSION['alphabet']) ? $_SESSION['alphabet'] : '';
 $modifiedAlphabet = isset($_SESSION['modifiedAlphabet']) ? $_SESSION['modifiedAlphabet'] : '';
 $cipherTable = isset($_SESSION['cipherTable']) ? $_SESSION['cipherTable'] : '';
 $encryptedText = isset($_SESSION['encryptedText']) ? $_SESSION['encryptedText'] : '';
+$tableAnalysis = isset($_SESSION['tableAnalysis']) ? $_SESSION['tableAnalysis'] : '';
 
 
 echo '<style>
 .output { display: ' . (isset($_SESSION['keyword']) ? 'flex' : 'none') . '; }
 </style>';
 
+echo '<style>
+.frequency-container { display: ' . (isset($_SESSION['tableAnalysis']) ? 'flex' : 'none') . '; }
+</style>';
+
 // Очищаем сессию после получения данных
-unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText']);
+unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
 ?>
 
 
@@ -51,7 +56,7 @@ unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION[
 
 
     
-    <form action="caesarCipher.php" method="post" class="container">
+    <form action="caesarCipher.php" method="post" class="container c1" >
         <h2>Шифрование текста</h2>
         <label for="text">Введите текст:</label>
         <textarea name="text" id="text" rows="4" placeholder="Введите текст для шифрования..."><?php echo htmlspecialchars($text); ?></textarea>
@@ -96,43 +101,24 @@ unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION[
     
     
 
-    <div class="container">
+    <form action="frequencyAnalysis.php" method="post" class="container">
         <h2>Анализ частоты символов</h2>
-        <label for="frequency-text">Введите текст для анализа:</label>
-        <textarea id="frequency-text" rows="4" placeholder="Текст для анализа частоты..."></textarea>
+        <label for="frequencyText">Введите текст для анализа:</label>
+        <textarea id="frequencyText" name="frequencyText" rows="4" placeholder="Текст для анализа частоты..."></textarea>
 
         <button>Анализировать</button>
 
         <div class="frequency-container">
             <h2>Частота букв</h2>
             <table class="frequency-table">
-                <thead>
-                    <tr>
-                        <th>Буква</th>
-                        <th>Частота</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>А</td><td>12%</td></tr>
-                    <tr><td>Б</td><td>3%</td></tr>
-                    <tr><td>В</td><td>8%</td></tr>
-                    <tr><td>Г</td><td>2%</td></tr>
-                    <tr><td>Д</td><td>5%</td></tr>
-                    <tr><td>Е</td><td>10%</td></tr>
-                    <tr><td>Ж</td><td>1%</td></tr>
-                    <tr><td>З</td><td>4%</td></tr>
-                    <tr><td>И</td><td>9%</td></tr>
-                    <tr><td>К</td><td>6%</td></tr>
-                    <tr><td>Л</td><td>7%</td></tr>
-                    <tr><td>М</td><td>5%</td></tr>
-                    <tr><td>Н</td><td>11%</td></tr>
-                    <tr><td>О</td><td>14%</td></tr>
-                    <tr><td>П</td><td>6%</td></tr>
-                </tbody>
+            <?php
+                echo $tableAnalysis;
+                // isset($_SESSION['tableAnalysis'])? echo $_SESSION['tableAnalysis']:echo '(((((';
+                ?>
             </table>
         </div>
-        
-    </div>
+    </form>
+
 
     <div class="container">
         <h2>Расшифровка методом Аль-Кинди</h2>
