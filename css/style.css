@@ -38,7 +38,7 @@ label {
     font-weight: bold;
     margin: 3%;
 }
-textarea, input[type="text"], button {
+textarea, input[type="text"], button, .accordion-label {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -46,7 +46,7 @@ textarea, input[type="text"], button {
     border-radius: 8px;
     box-sizing: border-box;
 }
-button {
+button, .accordion-label  {
     background: #3498db;
     color: white;
     border: none;
@@ -162,6 +162,10 @@ button:hover {
     margin-top: 20px;
     width: 100%;
     text-align: left;
+    /* display: none; */
+    /* display: flex; */
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .result-card {
@@ -171,6 +175,9 @@ button:hover {
     padding: 15px;
     margin-bottom: 15px;
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }
 
 .result-card h4 {
@@ -215,19 +222,6 @@ th {
     display: none; /* Скрываем чекбокс */
 }
 
-.accordion-label {
-    background-color: #3498db;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1em;
-    transition: background-color 0.3s;
-    display: block; /* Делаем метку блочным элементом */
-}
-
 .accordion-label:hover {
     background-color: #2980b9;
 }
@@ -260,7 +254,7 @@ th, td {
 
 th {
     background: #f2f2f2;
-    display: none; /* Скрытие заголовков */
+    /* display: none; Скрытие заголовков */
 }
 
 tr:hover {

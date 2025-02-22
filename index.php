@@ -9,8 +9,13 @@ $modifiedAlphabet = isset($_SESSION['modifiedAlphabet']) ? $_SESSION['modifiedAl
 $cipherTable = isset($_SESSION['cipherTable']) ? $_SESSION['cipherTable'] : '';
 $encryptedText = isset($_SESSION['encryptedText']) ? $_SESSION['encryptedText'] : '';
 
+
+echo '<style>
+.output { display: ' . (isset($_SESSION['keyword']) ? 'flex' : 'none') . '; }
+</style>';
+
 // Очищаем сессию после получения данных
-unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['newAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText']);
+unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText']);
 ?>
 
 
@@ -56,6 +61,7 @@ unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['newAlphabet'], $_SESSI
 
         <button type="submit">Зашифровать</button>
         
+       
         <div class="output">
             <h3>Результаты шифрования</h3>
             <div class="result-card">
@@ -79,7 +85,7 @@ unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['newAlphabet'], $_SESSI
                     </table>
                 </div>
             </div>
-            </div>
+        
             <div class="result-card">
                 <h4>Зашифрованный текст:</h4>
                 <div id="encryptedText"><?php echo htmlspecialchars($encryptedText); ?></div>
