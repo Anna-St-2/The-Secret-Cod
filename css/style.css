@@ -47,7 +47,7 @@ label {
     font-weight: bold;
     margin: 3%;
 }
-textarea, input[type="text"], button, .accordion-label-alphabet, .accordion-label-frequency {
+textarea, input[type="text"], button, a, .accordion-label-alphabet, .accordion-label-frequency {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -58,13 +58,16 @@ textarea, input[type="text"], button, .accordion-label-alphabet, .accordion-labe
     justify-content: center;
 }
 
-button, .accordion-label-alphabet, .accordion-label-frequency{
+button, a, .accordion-label-alphabet, .accordion-label-frequency{
     width: 60%;
 }
 
+a {
+    text-decoration: none;
+    font-size: 70%;
+}
 
-
-button, .accordion-label-alphabet, .accordion-label-frequency    {
+button, a, .accordion-label-alphabet, .accordion-label-frequency    {
     background: #3498db;
     color: white;
     border: none;
@@ -72,7 +75,7 @@ button, .accordion-label-alphabet, .accordion-label-frequency    {
     transition: background 0.3s;
     margin: 3%;
 }
-button:hover {
+button:hover, a:hover{
     background: #2980b9;
 }
 

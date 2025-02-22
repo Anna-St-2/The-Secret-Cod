@@ -40,7 +40,7 @@ if (isset($_GET['clear_session'])) {
 <body>
     <header>
         <h3>The Secret Cod</h3>
-        <button class ="btnClean" href="?clear_session=1">Очистить сессию</button>
+        <a class ="btnClean" href="?clear_session=1">Очистить сессию</a>
     </header>
 
     <div class="container instructions">
