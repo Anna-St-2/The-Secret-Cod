@@ -22,6 +22,10 @@ echo '<style>
 
 // Очищаем сессию после получения данных
 // unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
+// Очистка сессии, если это необходимо
+if (isset($_GET['clear_session'])) {
+    unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['frequencyText'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
+}
 ?>
 
 
@@ -34,7 +38,10 @@ echo '<style>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>The Secret Codddddd</header>
+    <header>
+        <h3>The Secret Cod</h3>
+        <button class ="btnClean" href="?clear_session=1">Очистить сессию</button>
+    </header>
 
     <div class="container instructions">
             <h2>Что делает приложение?</h2>
