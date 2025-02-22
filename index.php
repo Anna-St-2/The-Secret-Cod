@@ -83,8 +83,8 @@ if (isset($_GET['clear_session'])) {
             </div>
             <div class="result-card">
                 <h4>Таблица соответствия:</h4>
-                <input type="checkbox" id="accordion-toggle" class="accordion-toggle">
-                <label for="accordion-toggle" class="accordion-label">Показать/Скрыть таблицу</label>
+                <input type="checkbox" id="accordion-toggle-alphabet" class="accordion-toggle-alphabet">
+                <label for="accordion-toggle-alphabet" class="accordion-label-alphabet">Показать/Скрыть таблицу</label>
                 <div class="panel">
                     <table>
                         <tbody>
@@ -115,14 +115,23 @@ if (isset($_GET['clear_session'])) {
         <textarea id="frequencyText" name="frequencyText" rows="4" placeholder="Текст для анализа частоты..."><?php echo htmlspecialchars($frequencyText);?></textarea>
         <button>Анализировать</button>
 
-        <div class="frequency-container">
-            <h2>Частота букв</h2>
-            <table class="frequency-table">
-            <?php
-                echo $tableAnalysis;
-                // isset($_SESSION['tableAnalysis'])? echo $_SESSION['tableAnalysis']:echo '(((((';
-                ?>
-            </table>
+        <div class="output">
+            <div class="result-card">
+                <!-- <div class="frequency-container"> -->
+                    <h4>Таблица частоты символов</h4>
+                    <input type="checkbox" id="accordion-toggle-frequency" class="accordion-toggle-frequency">
+                    <label for="accordion-toggle-frequency" class="accordion-label-frequency">Показать/Скрыть таблицу</label>
+                    <div class="panel">
+                        
+                        <table class="frequency-table">
+                        <?php
+                            echo $tableAnalysis;
+                            // isset($_SESSION['tableAnalysis'])? echo $_SESSION['tableAnalysis']:echo '(((((';
+                            ?>
+                        </table>
+                    </div>
+            <!-- </div> -->
+        </div>
         </div>
     </form>
 
