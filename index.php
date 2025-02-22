@@ -7,6 +7,7 @@ $keyword = isset($_SESSION['keyword']) ? $_SESSION['keyword'] : '';
 $alphabet = isset($_SESSION['alphabet']) ? $_SESSION['alphabet'] : '';
 $modifiedAlphabet = isset($_SESSION['modifiedAlphabet']) ? $_SESSION['modifiedAlphabet'] : '';
 $cipherTable = isset($_SESSION['cipherTable']) ? $_SESSION['cipherTable'] : '';
+$frequencyText = isset($_SESSION['frequencyText']) ? $_SESSION['frequencyText'] : '';
 $encryptedText = isset($_SESSION['encryptedText']) ? $_SESSION['encryptedText'] : '';
 $tableAnalysis = isset($_SESSION['tableAnalysis']) ? $_SESSION['tableAnalysis'] : '';
 
@@ -20,7 +21,7 @@ echo '<style>
 </style>';
 
 // Очищаем сессию после получения данных
-unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
+// unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
 ?>
 
 
@@ -104,7 +105,7 @@ unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION[
     <form action="frequencyAnalysis.php" method="post" class="container">
         <h2>Анализ частоты символов</h2>
         <label for="frequencyText">Введите текст для анализа:</label>
-        <textarea id="frequencyText" name="frequencyText" rows="4" placeholder="Текст для анализа частоты..."></textarea>
+        <textarea id="frequencyText" name="frequencyText" rows="4" placeholder="Текст для анализа частоты..." value="<?php echo htmlspecialchars($frequencyText);?>"></textarea>
 
         <button>Анализировать</button>
 

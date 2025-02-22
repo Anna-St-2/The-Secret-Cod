@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $_SESSION['tableAnalysis'] = $tableAnalysis;
+    $_SESSION['frequencyText'] = $tableAnalysis;
 
 
     // echo $_SESSION['tableAnalysis'];
