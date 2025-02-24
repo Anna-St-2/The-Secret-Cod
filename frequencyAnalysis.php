@@ -30,11 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $_SESSION['tableAnalysis'] = $tableAnalysis;
     $_SESSION['frequencyText'] = $f2;
-    echo $frequencyText.'<br>'. $f2;
+    $_SESSION['frequency'] = $frequency;
+    // print_r($frequency);
 
     // echo $_SESSION['tableAnalysis'];
 
-
+    // print_r($_SESSION['frequency']);
     header('Location: index.php');
     exit();
 }

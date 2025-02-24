@@ -8,8 +8,10 @@ $alphabet = isset($_SESSION['alphabet']) ? $_SESSION['alphabet'] : '';
 $modifiedAlphabet = isset($_SESSION['modifiedAlphabet']) ? $_SESSION['modifiedAlphabet'] : '';
 $cipherTable = isset($_SESSION['cipherTable']) ? $_SESSION['cipherTable'] : '';
 $frequencyText = isset($_SESSION['frequencyText']) ? $_SESSION['frequencyText'] : '';
+$frequency = isset($_SESSION['frequency']) ? $_SESSION['frequency'] : '';
 $encryptedText = isset($_SESSION['encryptedText']) ? $_SESSION['encryptedText'] : '';
 $tableAnalysis = isset($_SESSION['tableAnalysis']) ? $_SESSION['tableAnalysis'] : '';
+$decryptedText = isset($_SESSION['decryptedText']) ? $_SESSION['decryptedText'] : '';
 
 
 echo '<style>
@@ -20,11 +22,16 @@ echo '<style>
 .frequency-container { display: ' . (isset($_SESSION['tableAnalysis']) ? 'flex' : 'none') . '; }
 </style>';
 
+// echo '<style>
+// .result-card-decryptedText { display: ' . (isset($_SESSION['result-card-decryptedText']) ? 'flex' : 'none') . '; }
+// </style>';
+
+
 // Очищаем сессию после получения данных
 // unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
 // Очистка сессии, если это необходимо
 if (isset($_GET['clear_session'])) {
-    unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['frequencyText'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
+    unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['frequencyText'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis'], $_SESSION['decryptedText']);
 }
 ?>
 
@@ -136,12 +143,17 @@ if (isset($_GET['clear_session'])) {
     </form>
 
 
-    <div class="container">
+    <form action="alKindi.php" method="post" class="container">
         <h2>Расшифровка методом Аль-Кинди</h2>
         <label for="decrypt">Введите зашифрованный текст:</label>
-        <textarea id="decrypt" rows="4" placeholder="Зашифрованный текст..."></textarea>
-
+        <textarea id="decrypt" rows="4" name="encryptedText" placeholder="Зашифрованный текст..."><?php echo htmlspecialchars($encryptedText); ?></textarea>
+        <!-- <input type="hidden" name="frequency" value='<?php echo json_encode($frequency); ?>'> -->
+        <p><?php print_r($frequency); ?></p>
         <button>Расшифровать</button>
-    </div>
+        <div class="result-card-decryptedText">
+            <h4>Расшифрованный текст:</h4>
+            <p id='decryptedText'><?php echo $decryptedText;?></p>
+        </div>
+    </form>
 </body>
 </html>
