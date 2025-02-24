@@ -300,8 +300,27 @@ tr:hover {
 
 
 
+.result-card-decryptedText{
+    flex-direction: column;
+    align-items: center;
 
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#decryptedText{
+    width: 90%;
+    word-wrap: break-word; /* Переносит длинные слова */
+    /* overflow-wrap: break-word; Альтернатива word-wrap */
+    white-space: pre-wrap; /* Сохраняет пробелы и переносы строк */
+}
 
 /* .c1{
     display: none;

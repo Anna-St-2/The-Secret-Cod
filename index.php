@@ -15,23 +15,23 @@ $decryptedText = isset($_SESSION['decryptedText']) ? $_SESSION['decryptedText'] 
 
 
 echo '<style>
-.output { display: ' . (isset($_SESSION['keyword']) ? 'flex' : 'none') . '; }
+.output { display: ' . ((isset($_SESSION['keyword'])) ? 'flex' : 'none') . '; }
 </style>';
 
 echo '<style>
-.frequency-container { display: ' . (isset($_SESSION['tableAnalysis']) ? 'flex' : 'none') . '; }
+.frequency-container { display: ' . (!empty(($_SESSION['tableAnalysis'])) ? 'flex' : 'none') . '; }
 </style>';
 
-// echo '<style>
-// .result-card-decryptedText { display: ' . (isset($_SESSION['result-card-decryptedText']) ? 'flex' : 'none') . '; }
-// </style>';
+echo '<style>
+.result-card-decryptedText { display: ' . (!empty(($_SESSION['decryptedText'])) ? 'flex' : 'none') . '; }
+</style>';
 
 
 // Очищаем сессию после получения данных
 // unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
 // Очистка сессии, если это необходимо
 if (isset($_GET['clear_session'])) {
-    unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['frequencyText'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis'], $_SESSION['decryptedText']);
+    unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['frequencyText'], $_SESSION['frequency'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis'], $_SESSION['decryptedText']);
 }
 ?>
 
@@ -148,11 +148,14 @@ if (isset($_GET['clear_session'])) {
         <label for="decrypt">Введите зашифрованный текст:</label>
         <textarea id="decrypt" rows="4" name="encryptedText" placeholder="Зашифрованный текст..."><?php echo htmlspecialchars($encryptedText); ?></textarea>
         <!-- <input type="hidden" name="frequency" value='<?php echo json_encode($frequency); ?>'> -->
-        <p><?php print_r($frequency); ?></p>
+        <!-- <p><?php print_r($decryptedText); ?></p> -->
         <button>Расшифровать</button>
-        <div class="result-card-decryptedText">
-            <h4>Расшифрованный текст:</h4>
-            <p id='decryptedText'><?php echo $decryptedText;?></p>
+        <div class="output">
+
+            <div class="result-card-decryptedText result-card">
+                <h4>Расшифрованный текст:</h4>
+                <p id='decryptedText'><?php echo $decryptedText;?></p>
+            </div>
         </div>
     </form>
 </body>
