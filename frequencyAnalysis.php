@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $f2 = $frequencyText;
 
     // Удаляем регуляркой все символы, кроме букв
-    $frequencyText = preg_replace('/[^a-zа-яё]/u', '', $frequencyText);
+    // $frequencyText = preg_replace('/[^a-zа-яё]/u', '', $frequencyText);
 
     // Подсчитываем частоту каждого символа
     $frequency = [];
