@@ -12,6 +12,7 @@ $frequency = isset($_SESSION['frequency']) ? $_SESSION['frequency'] : '';
 $encryptedText = isset($_SESSION['encryptedText']) ? $_SESSION['encryptedText'] : '';
 $tableAnalysis = isset($_SESSION['tableAnalysis']) ? $_SESSION['tableAnalysis'] : '';
 $decryptedText = isset($_SESSION['decryptedText']) ? $_SESSION['decryptedText'] : '';
+$mapping = isset($_SESSION['mapping']) ? $_SESSION['mapping'] : '';
 
 
 echo '<style>
@@ -31,7 +32,7 @@ echo '<style>
 // unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis']);
 // Очистка сессии, если это необходимо
 if (isset($_GET['clear_session'])) {
-    unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['frequencyText'], $_SESSION['frequency'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis'], $_SESSION['decryptedText']);
+    unset($_SESSION['text'], $_SESSION['keyword'], $_SESSION['alphabet'], $_SESSION['modifiedAlphabet'], $_SESSION['cipherTable'], $_SESSION['frequencyText'], $_SESSION['frequency'], $_SESSION['encryptedText'], $_SESSION['tableAnalysis'], $_SESSION['decryptedText'], $_SESSION['mapping']);
 }
 ?>
 
@@ -156,6 +157,45 @@ if (isset($_GET['clear_session'])) {
                 <h4>Расшифрованный текст:</h4>
                 <p id='decryptedText'><?php echo $decryptedText;?></p>
             </div>
+
+            <div class="output">
+                <div class="result-card">
+                    <h4>Таблица соответствий:</h4>
+                    <!-- Чекбокс для аккордеона -->
+                    <input type="checkbox" id="accordion-toggle-mapping" class="accordion-toggle-frequency">
+                    <label for="accordion-toggle-mapping" class="accordion-label-frequency">Показать/Скрыть таблицу</label>
+                    
+                    <!-- Панель с таблицей -->
+                    <div class="panel">     
+                        <table class="frequency-table">
+                            <thead>
+                                <tr>
+                                    <th>Зашифрованный символ</th>
+                                    <th>Расшифрованный символ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                // Проверяем, есть ли данные в массиве $mapping
+                                if (!empty($mapping)) {
+                                    // Динамически заполняем таблицу
+                                    foreach ($mapping as $encryptedChar => $decryptedChar) {
+                                        echo "<tr>
+                                                <td>" . htmlspecialchars($encryptedChar) . "</td>
+                                                <td>" . htmlspecialchars($decryptedChar) . "</td>
+                                            </tr>";
+                                    }
+                                } else {
+                                    // Если массив пуст, выводим сообщение
+                                    echo "<tr><td colspan='2'>Нет данных для отображения</td></tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </form>
 </body>

@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    }
    
     $_SESSION['decryptedText'] = $decryptedText;
+    $_SESSION['mapping'] = $mapping;
     // echo $encryptedText;
     // print_r($mapping);
     // echo $decryptedText;
