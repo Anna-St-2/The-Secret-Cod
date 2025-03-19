@@ -4,7 +4,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $encryptedText = mb_strtolower(trim($_SESSION['encryptedText']));
     $frequency = $_SESSION['frequency'];
-    // Получаем частотный анализ и декодируем его из JSON
+   
     // $frequency = json_decode(trim($_SESSION['frequency']), true);
     // var_dump($_POST['frequency']);
     
@@ -24,18 +24,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    // Считаем частоту букв в зашифрованном тексте
    $encryptedFrequency = array_count_values(mb_str_split($encryptedText));
    arsort($encryptedFrequency);
+//    print_r($encryptedFrequency);
 
    // Создаем таблицу соответствий
    $mapping = [];
    $encryptedKeys = array_keys($encryptedFrequency);
    $frequencyKeys = array_keys($frequency);
 
-   // Сопоставляем буквы из зашифрованного текста с буквами из частотного массива
+   // сопоставление букв из зашифрованного текста с буквами из частотного анализ
    for ($i = 0; $i < min(count($encryptedKeys), count($frequencyKeys)); $i++) {
        $mapping[$encryptedKeys[$i]] = $frequencyKeys[$i]; //$mapping['б'] = 'е';
    }
+   print(count($frequency));
+   echo '<br>';
+   print(count($encryptedFrequency));   
+   echo '<br>';
+   print_r($mapping);
 
-   // Расшифровываем текст
+   
    $decryptedText = '';
    foreach (mb_str_split($encryptedText) as $char) {
        if (isset($mapping[$char])) {
@@ -44,8 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            $decryptedText .= $char; // оставляем как есть
        }
    }
-
+   
     $_SESSION['decryptedText'] = $decryptedText;
+    // echo $encryptedText;
     // print_r($mapping);
     // echo $decryptedText;
     header('Location: index.php');
